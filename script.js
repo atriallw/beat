@@ -1,4 +1,4 @@
-// ========== Мобильное меню ==========
+// ===== Мобильное меню =====
 const toggle = document.getElementById('mobileToggle');
 const nav = document.getElementById('mainNav');
 toggle.addEventListener('click', () => {
@@ -10,7 +10,7 @@ document.querySelectorAll('nav a').forEach(link => {
     });
 });
 
-// ========== Анимация при скролле ==========
+// ===== Анимация при скролле =====
 const fadeElements = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -21,7 +21,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 fadeElements.forEach(el => observer.observe(el));
 
-// ========== Счётчики ==========
+// ===== Счётчики =====
 const statNumbers = document.querySelectorAll('.stat-item .number');
 function animateNumbers() {
     statNumbers.forEach(el => {
@@ -53,7 +53,7 @@ const aboutObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 aboutObserver.observe(aboutSection);
 
-// ========== Форма ==========
+// ===== Форма =====
 const form = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 form.addEventListener('submit', (e) => {
@@ -79,7 +79,7 @@ form.addEventListener('submit', (e) => {
     }, 5000);
 });
 
-// ========== Плавная прокрутка ==========
+// ===== Плавная прокрутка =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -92,334 +92,101 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============================================================
-// ========== МАСКОТ (Canvas анимация) =========================
-// ============================================================
-
-const canvas = document.getElementById('mascotCanvas');
+// ===== Анимированное сердце =====
+const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
-
-// Размеры канваса (соответствуют атрибутам width/height)
-const W = 400, H = 500;
+const W = 400, H = 400;
 let time = 0;
 
-function drawMascot(t) {
+function drawHeart(t) {
     ctx.clearRect(0, 0, W, H);
 
-    // ----- Параметры анимации -----
-    const bounceY = Math.sin(t * 0.8) * 4;          // подпрыгивание
-    const sway = Math.sin(t * 0.5) * 0.03;           // покачивание (в радианах)
-    const hairWave = Math.sin(t * 1.2) * 0.1;        // для волос
-    const armSwing = Math.sin(t * 1.0) * 0.15;       // для рук
-    const mouthOpen = 0.5 + 0.5 * Math.sin(t * 2.5); // открытие рта (0..1)
+    const beat = Math.sin(t * 2.8) * 0.5 + 0.5;
+    const scale = 0.9 + beat * 0.2;
+    const glow = 0.3 + beat * 0.4;
 
-    // ----- Сохраняем и трансформируем всё целиком -----
-    ctx.save();
-    ctx.translate(W/2, H/2 + bounceY);   // центр + подпрыгивание
-    ctx.rotate(sway);                   // покачивание
+    const cx = W/2, cy = H/2 - 10;
 
-    // ============================================================
-    // 1. ТЕЛО (одежда)
-    // ============================================================
     ctx.save();
-    // Плащ/пальто – овал сужающийся книзу
+    ctx.translate(cx, cy);
+    ctx.scale(scale, scale);
+
+    ctx.shadowColor = `rgba(255, 80, 80, ${glow * 0.5})`;
+    ctx.shadowBlur = 40;
+
     ctx.beginPath();
-    ctx.moveTo(-45, 20);
-    ctx.quadraticCurveTo(-55, 50, -40, 90);
-    ctx.quadraticCurveTo(-20, 110, 0, 110);
-    ctx.quadraticCurveTo(20, 110, 40, 90);
-    ctx.quadraticCurveTo(55, 50, 45, 20);
+    ctx.moveTo(0, 40);
+    ctx.bezierCurveTo(-80, -20, -120, 40, 0, 110);
+    ctx.bezierCurveTo(120, 40, 80, -20, 0, 40);
     ctx.closePath();
-    ctx.fillStyle = '#2a3b4c';
+
+    const grad = ctx.createRadialGradient(-20, -10, 10, 0, 0, 100);
+    grad.addColorStop(0, '#ff4d4d');
+    grad.addColorStop(0.6, '#cc0000');
+    grad.addColorStop(1, '#880000');
+    ctx.fillStyle = grad;
     ctx.fill();
-    ctx.strokeStyle = '#1a2a3a';
-    ctx.lineWidth = 2;
-    ctx.stroke();
 
-    // Воротник-стоечка
-    ctx.beginPath();
-    ctx.ellipse(0, 15, 30, 12, 0, 0, Math.PI * 2);
-    ctx.fillStyle = '#3a4b5c';
-    ctx.fill();
-    ctx.stroke();
-
-    // Две вертикальные полосы-лоскута (расстёгнутый плащ)
-    ctx.beginPath();
-    ctx.moveTo(-15, 20);
-    ctx.lineTo(-15, 90);
-    ctx.strokeStyle = '#5a6b7c';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(15, 20);
-    ctx.lineTo(15, 90);
-    ctx.stroke();
-
-    // Ремешок на груди
-    ctx.beginPath();
-    ctx.moveTo(-35, 30);
-    ctx.lineTo(-5, 50);
-    ctx.strokeStyle = '#8B7355';
-    ctx.lineWidth = 4;
-    ctx.stroke();
-
-    // Кармашек
-    ctx.fillStyle = '#4a5b6c';
-    ctx.fillRect(-25, 45, 18, 15);
-    ctx.strokeRect(-25, 45, 18, 15);
-    ctx.beginPath();
-    ctx.moveTo(-25, 45);
-    ctx.lineTo(-16, 38);
-    ctx.lineTo(-7, 45);
-    ctx.stroke();
-
-    // ============================================================
-    // 2. РУКИ
-    // ============================================================
-    ctx.save();
-    // Левая рука (свисает)
-    ctx.translate(-48, 30);
-    ctx.rotate(0.2 + armSwing * 0.5);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.quadraticCurveTo(-10, 30, -5, 60);
-    ctx.strokeStyle = '#e0b0a0';
-    ctx.lineWidth = 10;
-    ctx.stroke();
-    // Рукав
-    ctx.beginPath();
-    ctx.ellipse(-2, 10, 12, 8, 0.3, 0, Math.PI * 2);
-    ctx.fillStyle = '#2a3b4c';
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-
-    // Правая рука (держит планшет)
-    ctx.save();
-    ctx.translate(48, 30);
-    ctx.rotate(-0.3 + armSwing * 0.7);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.quadraticCurveTo(15, 25, 5, 45);
-    ctx.strokeStyle = '#e0b0a0';
-    ctx.lineWidth = 10;
-    ctx.stroke();
-    // Рукав
-    ctx.beginPath();
-    ctx.ellipse(2, 10, 12, 8, -0.3, 0, Math.PI * 2);
-    ctx.fillStyle = '#2a3b4c';
-    ctx.fill();
-    ctx.stroke();
-    // Планшет
-    ctx.save();
-    ctx.translate(5, 45);
-    ctx.rotate(-0.2);
-    ctx.fillStyle = '#333';
-    ctx.shadowColor = 'rgba(0,0,0,0.3)';
-    ctx.shadowBlur = 8;
-    ctx.fillRect(-15, -10, 30, 20);
     ctx.shadowBlur = 0;
-    ctx.fillStyle = '#5af';
-    ctx.fillRect(-10, -6, 20, 12);
-    ctx.fillStyle = '#fff';
-    ctx.font = '10px sans-serif';
-    ctx.fillText('BEAT', -6, 3);
-    ctx.restore();
-    ctx.restore();
-
-    // ============================================================
-    // 3. НОГИ
-    // ============================================================
-    ctx.save();
-    // Левая нога
-    ctx.translate(-18, 110);
-    ctx.rotate(0.1);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(-4, 25);
-    ctx.strokeStyle = '#2a3b4c';
-    ctx.lineWidth = 14;
-    ctx.stroke();
-    // Обувь
-    ctx.beginPath();
-    ctx.ellipse(-4, 25, 10, 6, 0, 0, Math.PI * 2);
-    ctx.fillStyle = '#1a2a3a';
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-
-    ctx.save();
-    // Правая нога
-    ctx.translate(18, 110);
-    ctx.rotate(-0.1);
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(4, 25);
-    ctx.strokeStyle = '#2a3b4c';
-    ctx.lineWidth = 14;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.ellipse(4, 25, 10, 6, 0, 0, Math.PI * 2);
-    ctx.fillStyle = '#1a2a3a';
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-
-    // ============================================================
-    // 4. ГОЛОВА
-    // ============================================================
-    ctx.save();
-    ctx.translate(0, -20);
-
-    // Основа головы – овал
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 60, 70, 0, 0, Math.PI * 2);
-    ctx.fillStyle = '#fce4d6';
-    ctx.fill();
-    ctx.strokeStyle = '#1a2a3a';
+    ctx.strokeStyle = '#660000';
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // ============================================================
-    // 5. ВОЛОСЫ
-    // ============================================================
-    ctx.save();
-    ctx.strokeStyle = '#8B5A2B';
-    ctx.lineWidth = 12;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    // Задняя часть волос (большая дуга сверху)
     ctx.beginPath();
-    ctx.arc(0, -10, 65, -Math.PI, 0);
-    ctx.stroke();
-
-    // Торчащие пряди на макушке
-    const spikes = [
-        [-30, -65], [-15, -75], [0, -80], [15, -75], [30, -65]
-    ];
-    spikes.forEach(([x, y]) => {
-        ctx.beginPath();
-        ctx.moveTo(x, y - 5);
-        ctx.quadraticCurveTo(x + 8, y - 25, x + 15, y - 10);
-        ctx.stroke();
-    });
-
-    // Хвостик справа (с крестиком)
-    ctx.beginPath();
-    ctx.moveTo(55, -20);
-    ctx.quadraticCurveTo(80, -30, 85, -10 + hairWave * 15);
-    ctx.quadraticCurveTo(75, 5, 55, 0);
-    ctx.stroke();
-    // Крестик на хвостике
-    ctx.strokeStyle = '#2a1a0a';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(78, -20 + hairWave * 8);
-    ctx.lineTo(88, -10 + hairWave * 8);
-    ctx.moveTo(88, -20 + hairWave * 8);
-    ctx.lineTo(78, -10 + hairWave * 8);
-    ctx.stroke();
-
-    // Чёлка – две пряди в виде сердечка
-    ctx.strokeStyle = '#8B5A2B';
-    ctx.lineWidth = 10;
-    ctx.beginPath();
-    ctx.moveTo(-20, -40);
-    ctx.quadraticCurveTo(-10, -60, 0, -50);
-    ctx.quadraticCurveTo(10, -60, 20, -40);
-    ctx.stroke();
-
-    // Длинная прядь слева
-    ctx.beginPath();
-    ctx.moveTo(-35, -30);
-    ctx.quadraticCurveTo(-60, -10, -55, 30 + hairWave * 10);
-    ctx.stroke();
-
-    ctx.restore(); // волосы
-
-    // ============================================================
-    // 6. ЛИЦО
-    // ============================================================
-    // Глаза (большие овалы)
-    const eyeY = -10;
-    const eyeSpacing = 30;
-    // Моргание: каждые ~3 секунды
-    const blinkCycle = t % 3.5;
-    const blinkFactor = (blinkCycle > 3.0 && blinkCycle < 3.3) ? 0.1 : 1.0;
-
-    // Глазные яблоки
-    ctx.fillStyle = 'white';
-    ctx.beginPath();
-    ctx.ellipse(-eyeSpacing, eyeY, 18, 22 * blinkFactor, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.ellipse(eyeSpacing, eyeY, 18, 22 * blinkFactor, 0, 0, Math.PI * 2);
+    ctx.ellipse(-25, -15, 20, 30, -0.3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
     ctx.fill();
 
-    // Зрачки
-    ctx.fillStyle = '#3a5a9a';
-    ctx.beginPath();
-    ctx.ellipse(-eyeSpacing, eyeY, 10, 16 * blinkFactor, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.ellipse(eyeSpacing, eyeY, 10, 16 * blinkFactor, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Блики
-    ctx.fillStyle = 'white';
-    ctx.beginPath();
-    ctx.arc(-eyeSpacing - 5, eyeY - 5, 4, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(eyeSpacing - 5, eyeY - 5, 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Румяна
-    ctx.fillStyle = 'rgba(255, 150, 150, 0.4)';
-    ctx.beginPath();
-    ctx.ellipse(-42, 20, 12, 8, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.ellipse(42, 20, 12, 8, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Рот (разговаривает)
-    const mouthHeight = 8 + mouthOpen * 10;
-    ctx.fillStyle = '#c0392b';
-    ctx.beginPath();
-    ctx.ellipse(0, 35, 12, mouthHeight, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = '#1a2a3a';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    ctx.restore(); // голова
-
-    // ============================================================
-    // 7. БЭЙДЖ BEAT на груди
-    // ============================================================
-    ctx.save();
-    ctx.translate(0, 70);
-    ctx.fillStyle = '#f0a0a0';
-    ctx.beginPath();
-    ctx.arc(0, 0, 12, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = '#1a1a1a';
-    ctx.font = 'bold 10px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('BEAT', 0, 0);
     ctx.restore();
 
-    ctx.restore(); // общая трансформация
+    // ЭКГ-линия
+    ctx.save();
+    ctx.strokeStyle = '#00ff88';
+    ctx.lineWidth = 3;
+    ctx.shadowColor = '#00ff88';
+    ctx.shadowBlur = 12;
+
+    const ecgY = H - 30;
+    const ecgW = W - 40;
+    const startX = 20;
+
+    ctx.beginPath();
+    for (let i = 0; i <= ecgW; i += 2) {
+        const x = startX + i;
+        let y = 0;
+        const phase = (i / ecgW) * 20 + t * 3;
+        if (i < ecgW * 0.2) y = 0;
+        else if (i < ecgW * 0.25) y = -15 * Math.sin((i - ecgW * 0.2) / (ecgW * 0.05) * Math.PI);
+        else if (i < ecgW * 0.35) y = 5;
+        else if (i < ecgW * 0.4) y = -35 * Math.sin((i - ecgW * 0.35) / (ecgW * 0.05) * Math.PI);
+        else if (i < ecgW * 0.45) y = 5;
+        else if (i < ecgW * 0.55) y = 0;
+        else if (i < ecgW * 0.65) y = -10 * Math.sin((i - ecgW * 0.55) / (ecgW * 0.1) * Math.PI);
+        else if (i < ecgW * 0.75) y = 5;
+        else if (i < ecgW * 0.85) y = 15 * Math.sin((i - ecgW * 0.75) / (ecgW * 0.1) * Math.PI);
+        else y = 0;
+
+        const offset = (i + t * 80) % ecgW;
+        if (i < offset) continue;
+
+        if (i === 0 || i === offset) ctx.moveTo(x, ecgY + y);
+        else ctx.lineTo(x, ecgY + y);
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 20px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.shadowColor = 'rgba(0,0,0,0.5)';
+    ctx.shadowBlur = 8;
+    ctx.fillText('BEAT', W/2, H - 10);
 }
 
-// ========== Запуск анимации ==========
 function animate() {
-    time += 0.016; // примерно 60 FPS
-    drawMascot(time);
+    time += 0.016;
+    drawHeart(time);
     requestAnimationFrame(animate);
 }
-
 animate();
