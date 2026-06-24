@@ -27,144 +27,11 @@
         </div>
     </header>
 
-    <!-- ГЕРОЙ С МАСКОТОМ -->
+    <!-- ГЕРОЙ с маскотом -->
     <section class="hero" id="home">
         <div class="container hero-container">
-            <!-- Левая часть: текст -->
             <div class="hero-text">
                 <h1>Ваше сердце <span>под контролем</span> 24/7</h1>
-                <!-- МАСКОТ (анимированный) -->
-                <div class="mascot-wrapper">
-                    <svg class="mascot-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <style>
-                                .mascot-svg {
-                                    width: 100%;
-                                    height: auto;
-                                    max-width: 280px;
-                                    display: block;
-                                    margin: 0 auto;
-                                }
-                                /* --- АНИМАЦИИ --- */
-                                @keyframes blink {
-                                    0%, 90%, 100% { transform: scaleY(1); }
-                                    95% { transform: scaleY(0.1); }
-                                }
-                                @keyframes wave {
-                                    0%, 100% { transform: rotate(-10deg); }
-                                    50% { transform: rotate(20deg); }
-                                }
-                                @keyframes hairLeft {
-                                    0%, 100% { transform: rotate(0deg); }
-                                    50% { transform: rotate(-8deg); }
-                                }
-                                @keyframes hairRight {
-                                    0%, 100% { transform: rotate(0deg); }
-                                    50% { transform: rotate(8deg); }
-                                }
-                                @keyframes mouth {
-                                    0%, 100% { d: path("M160,290 Q200,310 240,290"); }
-                                    50% { d: path("M170,285 Q200,270 230,285"); }
-                                }
-                                .eye-left, .eye-right {
-                                    transform-origin: center;
-                                    animation: blink 4s infinite;
-                                }
-                                .arm-left {
-                                    transform-origin: 230px 360px;
-                                    animation: wave 2s infinite ease-in-out;
-                                }
-                                .hair-l {
-                                    transform-origin: 130px 190px;
-                                    animation: hairLeft 3s infinite ease-in-out;
-                                }
-                                .hair-r {
-                                    transform-origin: 270px 190px;
-                                    animation: hairRight 3.5s infinite ease-in-out;
-                                }
-                                .mouth-path {
-                                    animation: mouth 3s infinite ease-in-out;
-                                }
-                            </style>
-                        </defs>
-
-                        <!-- === ТЕЛО === -->
-                        <!-- Футболка/рубашка -->
-                        <path d="M110,320 L110,420 Q200,440 290,420 L290,320 Q200,340 110,320 Z" fill="#3a3a3a" stroke="#f0a0a0" stroke-width="4"/>
-                        <!-- Пояс -->
-                        <path d="M110,420 Q200,440 290,420" stroke="#f0a0a0" stroke-width="5" fill="none"/>
-                        <!-- Штанины -->
-                        <path d="M150,420 L130,490 L180,490 L200,430 Z" fill="#2d2d2d" stroke="#f0a0a0" stroke-width="3"/>
-                        <path d="M250,420 L220,490 L270,490 L280,430 Z" fill="#2d2d2d" stroke="#f0a0a0" stroke-width="3"/>
-                        <!-- Шея -->
-                        <rect x="180" y="270" width="40" height="50" rx="10" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="3"/>
-
-                        <!-- === ГОЛОВА === -->
-                        <!-- Лицо -->
-                        <circle cx="200" cy="200" r="110" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="5"/>
-
-                        <!-- === ГЛАЗА (с анимацией моргания) === -->
-                        <g class="eye-left">
-                            <ellipse cx="150" cy="190" rx="28" ry="35" fill="#f0a0a0" stroke="#3b3b3b" stroke-width="3"/>
-                            <ellipse cx="150" cy="190" rx="20" ry="25" fill="#3b3b3b"/>
-                        </g>
-                        <g class="eye-right">
-                            <ellipse cx="250" cy="190" rx="28" ry="35" fill="#f0a0a0" stroke="#3b3b3b" stroke-width="3"/>
-                            <ellipse cx="250" cy="190" rx="20" ry="25" fill="#3b3b3b"/>
-                        </g>
-
-                        <!-- Родинки (капли под глазами) -->
-                        <ellipse cx="120" cy="225" rx="6" ry="10" fill="#3b3b3b" opacity="0.6"/>
-                        <ellipse cx="280" cy="225" rx="6" ry="10" fill="#3b3b3b" opacity="0.6"/>
-
-                        <!-- === РОТ (анимируется) === -->
-                        <path class="mouth-path" d="M160,290 Q200,310 240,290" stroke="#3b3b3b" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-                        <!-- === БРОВИ === -->
-                        <path d="M120,150 Q150,130 180,145" stroke="#3b3b3b" stroke-width="5" fill="none" stroke-linecap="round"/>
-                        <path d="M220,145 Q250,130 280,150" stroke="#3b3b3b" stroke-width="5" fill="none" stroke-linecap="round"/>
-
-                        <!-- === УХО (с крестом X) === -->
-                        <ellipse cx="90" cy="180" rx="25" ry="40" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
-                        <path d="M75,165 L105,195 M105,165 L75,195" stroke="#3b3b3b" stroke-width="4" stroke-linecap="round"/>
-
-                        <!-- === ВОЛОСЫ (анимированные пряди) === -->
-                        <!-- Левая прядь -->
-                        <g class="hair-l">
-                            <path d="M100,150 Q80,110 120,80 Q150,70 170,100 Q140,120 130,150" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                            <path d="M90,170 Q70,140 100,100 Q120,80 140,110" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                        </g>
-                        <!-- Правая прядь -->
-                        <g class="hair-r">
-                            <path d="M300,150 Q320,110 280,80 Q250,70 230,100 Q260,120 270,150" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                            <path d="M310,170 Q330,140 300,100 Q280,80 260,110" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                        </g>
-                        <!-- Чёлка (центральная, не анимируется) -->
-                        <path d="M150,130 Q200,100 250,130 Q200,160 150,130" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                        <path d="M130,140 Q160,110 190,135" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-                        <path d="M270,140 Q240,110 210,135" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
-
-                        <!-- === РУКИ === -->
-                        <!-- Левая рука (машет) -->
-                        <g class="arm-left">
-                            <path d="M120,340 L70,290 Q50,270 60,250 Q75,260 90,280 L130,330" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
-                            <!-- Ладошка -->
-                            <circle cx="60" cy="250" r="20" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
-                            <circle cx="50" cy="240" r="5" fill="#f0a0a0"/>
-                            <circle cx="70" cy="240" r="5" fill="#f0a0a0"/>
-                        </g>
-                        <!-- Правая рука (стоит на поясе) -->
-                        <g>
-                            <path d="M280,340 L320,300 Q340,280 330,260 Q320,270 300,290 L270,330" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
-                            <circle cx="330" cy="260" r="18" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
-                        </g>
-
-                        <!-- Акцентные линии (как на эскизе) -->
-                        <path d="M150,420 L140,460" stroke="#f0a0a0" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M250,420 L260,460" stroke="#f0a0a0" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                </div>
-
                 <p>BEAT — умное приложение для мониторинга пульса, давления и ритма. Анализ рисков, экстренные оповещения и отчёты для врача.</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary"><i class="fab fa-apple"></i> App Store</a>
@@ -177,14 +44,13 @@
                     <span><i class="fas fa-heart"></i> 500+ активных</span>
                 </div>
             </div>
-            <!-- Правая часть: мокап телефона (можно заменить на свой) -->
             <div class="hero-image">
-                <img src="https://via.placeholder.com/400x600/3B3B3B/FFFFFF?text=BEAT+APP" alt="Мокап приложения BEAT" />
+                <canvas id="mascotCanvas" width="400" height="500"></canvas>
             </div>
         </div>
     </section>
 
-    <!-- ОСТАЛЬНЫЕ СЕКЦИИ (без изменений) -->
+    <!-- О ПРОЕКТЕ -->
     <section id="about">
         <div class="container">
             <div class="section-header fade-up">
@@ -214,6 +80,7 @@
         </div>
     </section>
 
+    <!-- ФУНКЦИИ -->
     <section id="features" class="section-alt">
         <div class="container">
             <div class="section-header fade-up">
@@ -231,6 +98,7 @@
         </div>
     </section>
 
+    <!-- ДЛЯ КОГО -->
     <section id="audience">
         <div class="container">
             <div class="section-header fade-up">
@@ -245,6 +113,7 @@
         </div>
     </section>
 
+    <!-- ПРЕИМУЩЕСТВА -->
     <section id="benefits" class="section-alt">
         <div class="container">
             <div class="section-header fade-up">
@@ -260,6 +129,7 @@
         </div>
     </section>
 
+    <!-- КОМАНДА -->
     <section id="team">
         <div class="container">
             <div class="section-header fade-up">
@@ -275,6 +145,7 @@
         </div>
     </section>
 
+    <!-- ОТЗЫВЫ -->
     <section id="testimonials" class="section-alt">
         <div class="container">
             <div class="section-header fade-up">
@@ -289,6 +160,7 @@
         </div>
     </section>
 
+    <!-- КОНТАКТЫ -->
     <section id="contact">
         <div class="container">
             <div class="section-header fade-up">
@@ -314,6 +186,7 @@
         </div>
     </section>
 
+    <!-- ПОДВАЛ -->
     <footer>
         <div class="container footer-container">
             <div>&copy; 2026 BEAT. Все права защищены.</div>
