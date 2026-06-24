@@ -1,214 +1,330 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BEAT – Умный контроль сердца</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BEAT – Умный контроль сердца</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- ШАПКА (без изменений) -->
-  <header>
-    <div class="container header-container">
-      <div class="logo"><i class="fas fa-heartbeat"></i> BEAT</div>
-      <nav id="mainNav">
-        <a href="#about">О проекте</a>
-        <a href="#features">Функции</a>
-        <a href="#audience">Для кого</a>
-        <a href="#team">Команда</a>
-        <a href="#testimonials">Отзывы</a>
-        <a href="#contact">Контакты</a>
-        <a href="#" class="btn-nav">Скачать</a>
-      </nav>
-      <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
-    </div>
-  </header>
-
-  <!-- ГЕРОЙ (без изменений) -->
-  <section class="hero" id="home">
-    <div class="container hero-container">
-      <div class="hero-text">
-        <h1>Ваше сердце <span>под контролем</span> 24/7</h1>
-        <p>BEAT — умное приложение для мониторинга пульса, давления и ритма. Анализ рисков, экстренные оповещения и отчёты для врача.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn btn-primary"><i class="fab fa-apple"></i> App Store</a>
-          <a href="#" class="btn btn-secondary"><i class="fab fa-google-play"></i> Google Play</a>
-          <a href="#about" class="btn btn-outline">Узнать больше</a>
+    <header>
+        <div class="container header-container">
+            <div class="logo"><i class="fas fa-heartbeat"></i> BEAT</div>
+            <nav id="mainNav">
+                <a href="#about">О проекте</a>
+                <a href="#features">Функции</a>
+                <a href="#audience">Для кого</a>
+                <a href="#team">Команда</a>
+                <a href="#testimonials">Отзывы</a>
+                <a href="#contact">Контакты</a>
+                <a href="#" class="btn-nav">Скачать</a>
+            </nav>
+            <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
         </div>
-        <div class="hero-stats">
-          <span><i class="fas fa-download"></i> 1000+ установок</span>
-          <span><i class="fas fa-star"></i> 4.8 / 5</span>
-          <span><i class="fas fa-heart"></i> 500+ активных</span>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="https://via.placeholder.com/400x600/3B3B3B/FFFFFF?text=BEAT+APP" alt="Мокап приложения BEAT" />
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- О ПРОЕКТЕ (изменена статистика: убран бюджет) -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-info-circle"></i> О проекте</h2>
-        <p>Мы создаём безопасный цифровой помощник для людей с сердечными заболеваниями.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-text fade-up">
-          <h3>Почему BEAT?</h3>
-          <p><strong>99% времени</strong> пациенты с проблемами сердца остаются без контроля. Врач видит только краткие снимки состояния, а опасные изменения часто остаются незамеченными.</p>
-          <p>BEAT решает эту проблему: непрерывный сбор данных с носимых устройств, интеллектуальный анализ трендов и мгновенные оповещения.</p>
-          <div class="about-stats">
-            <div class="stat-item">
-              <span class="number" data-target="99">0</span><span class="suffix">%</span>
-              <span class="label">времени без контроля</span>
+    <!-- ГЕРОЙ С МАСКОТОМ -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <!-- Левая часть: текст -->
+            <div class="hero-text">
+                <h1>Ваше сердце <span>под контролем</span> 24/7</h1>
+                <!-- МАСКОТ (анимированный) -->
+                <div class="mascot-wrapper">
+                    <svg class="mascot-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .mascot-svg {
+                                    width: 100%;
+                                    height: auto;
+                                    max-width: 280px;
+                                    display: block;
+                                    margin: 0 auto;
+                                }
+                                /* --- АНИМАЦИИ --- */
+                                @keyframes blink {
+                                    0%, 90%, 100% { transform: scaleY(1); }
+                                    95% { transform: scaleY(0.1); }
+                                }
+                                @keyframes wave {
+                                    0%, 100% { transform: rotate(-10deg); }
+                                    50% { transform: rotate(20deg); }
+                                }
+                                @keyframes hairLeft {
+                                    0%, 100% { transform: rotate(0deg); }
+                                    50% { transform: rotate(-8deg); }
+                                }
+                                @keyframes hairRight {
+                                    0%, 100% { transform: rotate(0deg); }
+                                    50% { transform: rotate(8deg); }
+                                }
+                                @keyframes mouth {
+                                    0%, 100% { d: path("M160,290 Q200,310 240,290"); }
+                                    50% { d: path("M170,285 Q200,270 230,285"); }
+                                }
+                                .eye-left, .eye-right {
+                                    transform-origin: center;
+                                    animation: blink 4s infinite;
+                                }
+                                .arm-left {
+                                    transform-origin: 230px 360px;
+                                    animation: wave 2s infinite ease-in-out;
+                                }
+                                .hair-l {
+                                    transform-origin: 130px 190px;
+                                    animation: hairLeft 3s infinite ease-in-out;
+                                }
+                                .hair-r {
+                                    transform-origin: 270px 190px;
+                                    animation: hairRight 3.5s infinite ease-in-out;
+                                }
+                                .mouth-path {
+                                    animation: mouth 3s infinite ease-in-out;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- === ТЕЛО === -->
+                        <!-- Футболка/рубашка -->
+                        <path d="M110,320 L110,420 Q200,440 290,420 L290,320 Q200,340 110,320 Z" fill="#3a3a3a" stroke="#f0a0a0" stroke-width="4"/>
+                        <!-- Пояс -->
+                        <path d="M110,420 Q200,440 290,420" stroke="#f0a0a0" stroke-width="5" fill="none"/>
+                        <!-- Штанины -->
+                        <path d="M150,420 L130,490 L180,490 L200,430 Z" fill="#2d2d2d" stroke="#f0a0a0" stroke-width="3"/>
+                        <path d="M250,420 L220,490 L270,490 L280,430 Z" fill="#2d2d2d" stroke="#f0a0a0" stroke-width="3"/>
+                        <!-- Шея -->
+                        <rect x="180" y="270" width="40" height="50" rx="10" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="3"/>
+
+                        <!-- === ГОЛОВА === -->
+                        <!-- Лицо -->
+                        <circle cx="200" cy="200" r="110" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="5"/>
+
+                        <!-- === ГЛАЗА (с анимацией моргания) === -->
+                        <g class="eye-left">
+                            <ellipse cx="150" cy="190" rx="28" ry="35" fill="#f0a0a0" stroke="#3b3b3b" stroke-width="3"/>
+                            <ellipse cx="150" cy="190" rx="20" ry="25" fill="#3b3b3b"/>
+                        </g>
+                        <g class="eye-right">
+                            <ellipse cx="250" cy="190" rx="28" ry="35" fill="#f0a0a0" stroke="#3b3b3b" stroke-width="3"/>
+                            <ellipse cx="250" cy="190" rx="20" ry="25" fill="#3b3b3b"/>
+                        </g>
+
+                        <!-- Родинки (капли под глазами) -->
+                        <ellipse cx="120" cy="225" rx="6" ry="10" fill="#3b3b3b" opacity="0.6"/>
+                        <ellipse cx="280" cy="225" rx="6" ry="10" fill="#3b3b3b" opacity="0.6"/>
+
+                        <!-- === РОТ (анимируется) === -->
+                        <path class="mouth-path" d="M160,290 Q200,310 240,290" stroke="#3b3b3b" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+                        <!-- === БРОВИ === -->
+                        <path d="M120,150 Q150,130 180,145" stroke="#3b3b3b" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <path d="M220,145 Q250,130 280,150" stroke="#3b3b3b" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+                        <!-- === УХО (с крестом X) === -->
+                        <ellipse cx="90" cy="180" rx="25" ry="40" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
+                        <path d="M75,165 L105,195 M105,165 L75,195" stroke="#3b3b3b" stroke-width="4" stroke-linecap="round"/>
+
+                        <!-- === ВОЛОСЫ (анимированные пряди) === -->
+                        <!-- Левая прядь -->
+                        <g class="hair-l">
+                            <path d="M100,150 Q80,110 120,80 Q150,70 170,100 Q140,120 130,150" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                            <path d="M90,170 Q70,140 100,100 Q120,80 140,110" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                        </g>
+                        <!-- Правая прядь -->
+                        <g class="hair-r">
+                            <path d="M300,150 Q320,110 280,80 Q250,70 230,100 Q260,120 270,150" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                            <path d="M310,170 Q330,140 300,100 Q280,80 260,110" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                        </g>
+                        <!-- Чёлка (центральная, не анимируется) -->
+                        <path d="M150,130 Q200,100 250,130 Q200,160 150,130" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                        <path d="M130,140 Q160,110 190,135" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+                        <path d="M270,140 Q240,110 210,135" fill="#3b3b3b" stroke="#2d2d2d" stroke-width="3"/>
+
+                        <!-- === РУКИ === -->
+                        <!-- Левая рука (машет) -->
+                        <g class="arm-left">
+                            <path d="M120,340 L70,290 Q50,270 60,250 Q75,260 90,280 L130,330" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
+                            <!-- Ладошка -->
+                            <circle cx="60" cy="250" r="20" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
+                            <circle cx="50" cy="240" r="5" fill="#f0a0a0"/>
+                            <circle cx="70" cy="240" r="5" fill="#f0a0a0"/>
+                        </g>
+                        <!-- Правая рука (стоит на поясе) -->
+                        <g>
+                            <path d="M280,340 L320,300 Q340,280 330,260 Q320,270 300,290 L270,330" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
+                            <circle cx="330" cy="260" r="18" fill="#f5f5f5" stroke="#f0a0a0" stroke-width="4"/>
+                        </g>
+
+                        <!-- Акцентные линии (как на эскизе) -->
+                        <path d="M150,420 L140,460" stroke="#f0a0a0" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M250,420 L260,460" stroke="#f0a0a0" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <p>BEAT — умное приложение для мониторинга пульса, давления и ритма. Анализ рисков, экстренные оповещения и отчёты для врача.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary"><i class="fab fa-apple"></i> App Store</a>
+                    <a href="#" class="btn btn-secondary"><i class="fab fa-google-play"></i> Google Play</a>
+                    <a href="#about" class="btn btn-outline">Узнать больше</a>
+                </div>
+                <div class="hero-stats">
+                    <span><i class="fas fa-download"></i> 1000+ установок</span>
+                    <span><i class="fas fa-star"></i> 4.8 / 5</span>
+                    <span><i class="fas fa-heart"></i> 500+ активных</span>
+                </div>
             </div>
-            <div class="stat-item">
-              <span class="number" data-target="500">0</span><span class="suffix">+</span>
-              <span class="label">плановых пользователей</span>
+            <!-- Правая часть: мокап телефона (можно заменить на свой) -->
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/400x600/3B3B3B/FFFFFF?text=BEAT+APP" alt="Мокап приложения BEAT" />
             </div>
-          </div>
         </div>
-        <div class="about-image fade-up">
-          <img src="https://via.placeholder.com/600x400/ECCACB/3B3B3B?text=Мониторинг+в+реальном+времени" alt="Иллюстрация" />
+    </section>
+
+    <!-- ОСТАЛЬНЫЕ СЕКЦИИ (без изменений) -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-info-circle"></i> О проекте</h2>
+                <p>Мы создаём безопасный цифровой помощник для людей с сердечными заболеваниями.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text fade-up">
+                    <h3>Почему BEAT?</h3>
+                    <p><strong>99% времени</strong> пациенты с проблемами сердца остаются без контроля. Врач видит только краткие снимки состояния, а опасные изменения часто остаются незамеченными.</p>
+                    <p>BEAT решает эту проблему: непрерывный сбор данных с носимых устройств, интеллектуальный анализ трендов и мгновенные оповещения.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="number" data-target="99">0</span><span class="suffix">%</span>
+                            <span class="label">времени без контроля</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="number" data-target="500">0</span><span class="suffix">+</span>
+                            <span class="label">плановых пользователей</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image fade-up">
+                    <img src="https://via.placeholder.com/600x400/ECCACB/3B3B3B?text=Мониторинг+в+реальном+времени" alt="Иллюстрация" />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ФУНКЦИИ (без изменений) -->
-  <section id="features" class="section-alt">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-microchip"></i> Ключевые функции</h2>
-        <p>Всё, что нужно для контроля сердца в одном приложении.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card fade-up"><i class="fas fa-heart"></i><h4>Мониторинг пульса</h4><p>Через камеру или умные часы.</p></div>
-        <div class="feature-card fade-up"><i class="fas fa-chart-line"></i><h4>Анализ трендов</h4><p>ИИ выявляет риски.</p></div>
-        <div class="feature-card fade-up"><i class="fas fa-bell"></i><h4>Экстренные оповещения</h4><p>Уведомления вам и близким.</p></div>
-        <div class="feature-card fade-up"><i class="fas fa-file-medical-alt"></i><h4>Отчёты для врача</h4><p>PDF с историей измерений.</p></div>
-        <div class="feature-card fade-up"><i class="fas fa-clock"></i><h4>Напоминания</h4><p>О приёме лекарств.</p></div>
-        <div class="feature-card fade-up"><i class="fas fa-shield-alt"></i><h4>Защита данных</h4><p>Шифрование и конфиденциальность.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ДЛЯ КОГО (без изменений) -->
-  <section id="audience">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-users"></i> Для кого BEAT</h2>
-        <p>Помогаем разным категориям пользователей.</p>
-      </div>
-      <div class="audience-grid">
-        <div class="audience-card fade-up"><i class="fas fa-user-md"></i><h4>Пациенты кардиологов</h4><p>Ежедневный контроль при диагнозах.</p></div>
-        <div class="audience-card fade-up"><i class="fas fa-exclamation-triangle"></i><h4>Группа риска</h4><p>Профилактика и раннее выявление.</p></div>
-        <div class="audience-card fade-up"><i class="fas fa-dumbbell"></i><h4>Спортсмены и ЗОЖ</h4><p>Контроль нагрузок и восстановления.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ПРЕИМУЩЕСТВА (без изменений) -->
-  <section id="benefits" class="section-alt">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-star"></i> Почему выбирают BEAT</h2>
-        <p>Простота, комплексность, безопасность.</p>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div><h4>Простота</h4><p>Интуитивный интерфейс для всех возрастов.</p></div>
-        <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-layer-group"></i></div><h4>Комплексность</h4><p>Все показатели в одном месте.</p></div>
-        <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-ruble-sign"></i></div><h4>Доступность</h4><p>Бесплатная базовая версия.</p></div>
-        <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-map-pin"></i></div><h4>Локализация</h4><p>Адаптация под российский рынок.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- КОМАНДА (изменены имена) -->
-  <section id="team">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-user-tie"></i> Наша команда</h2>
-        <p>Студенты и наставники.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Майорова Е.С.</h4><p>Руководитель</p></div>
-        <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Майорова А.С.</h4><p>Заместитель</p></div>
-        <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Емельянов А.М.</h4><p>Научный руководитель</p></div>
-        <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Филипенкова Е.М.</h4><p>Дизайнер</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ОТЗЫВЫ (оставлены, без изменений) -->
-  <section id="testimonials" class="section-alt">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-quote-right"></i> Отзывы</h2>
-        <p>Мнения пользователей.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card fade-up">
-          <p>«BEAT помогает мне контролировать давление каждый день. Очень удобно и понятно!»</p>
-          <div class="author">— Анна, 65 лет</div>
+    <section id="features" class="section-alt">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-microchip"></i> Ключевые функции</h2>
+                <p>Всё, что нужно для контроля сердца в одном приложении.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-up"><i class="fas fa-heart"></i><h4>Мониторинг пульса</h4><p>Через камеру или умные часы.</p></div>
+                <div class="feature-card fade-up"><i class="fas fa-chart-line"></i><h4>Анализ трендов</h4><p>ИИ выявляет риски.</p></div>
+                <div class="feature-card fade-up"><i class="fas fa-bell"></i><h4>Экстренные оповещения</h4><p>Уведомления вам и близким.</p></div>
+                <div class="feature-card fade-up"><i class="fas fa-file-medical-alt"></i><h4>Отчёты для врача</h4><p>PDF с историей измерений.</p></div>
+                <div class="feature-card fade-up"><i class="fas fa-clock"></i><h4>Напоминания</h4><p>О приёме лекарств.</p></div>
+                <div class="feature-card fade-up"><i class="fas fa-shield-alt"></i><h4>Защита данных</h4><p>Шифрование и конфиденциальность.</p></div>
+            </div>
         </div>
-        <div class="testimonial-card fade-up">
-          <p>«Отчёты для врача – супер! Теперь я прихожу на приём с готовой историей.»</p>
-          <div class="author">— Сергей, 58 лет</div>
-        </div>
-        <div class="testimonial-card fade-up">
-          <p>«Даже моя мама (72 года) освоила приложение за один день. Спасибо!»</p>
-          <div class="author">— Екатерина, 34 года</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- КОНТАКТЫ (без изменений) -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2><i class="fas fa-envelope"></i> Свяжитесь с нами</h2>
-        <p>Мы открыты к сотрудничеству.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info fade-up">
-          <h3>Контакты</h3>
-          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>г. Москва, Дорожная ул., 16к3</span></div>
-          <div class="contact-detail"><i class="fas fa-envelope"></i><span>info@beat-app.ru</span></div>
-          <div class="contact-detail"><i class="fas fa-phone-alt"></i><span>+7 (977) 855-27-21</span></div>
-          <div class="contact-detail"><i class="fas fa-phone-alt"></i><span>+7 (977) 855-39-19</span></div>
+    <section id="audience">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-users"></i> Для кого BEAT</h2>
+                <p>Помогаем разным категориям пользователей.</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card fade-up"><i class="fas fa-user-md"></i><h4>Пациенты кардиологов</h4><p>Ежедневный контроль при диагнозах.</p></div>
+                <div class="audience-card fade-up"><i class="fas fa-exclamation-triangle"></i><h4>Группа риска</h4><p>Профилактика и раннее выявление.</p></div>
+                <div class="audience-card fade-up"><i class="fas fa-dumbbell"></i><h4>Спортсмены и ЗОЖ</h4><p>Контроль нагрузок и восстановления.</p></div>
+            </div>
         </div>
-        <form class="contact-form fade-up" id="contactForm">
-          <input type="text" placeholder="Ваше имя" id="name" required />
-          <input type="email" placeholder="Email" id="email" required />
-          <textarea placeholder="Сообщение" id="message" required></textarea>
-          <button type="submit" class="btn btn-primary">Отправить</button>
-          <div id="formMessage" class="form-message"></div>
-        </form>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ПОДВАЛ (без изменений) -->
-  <footer>
-    <div class="container footer-container">
-      <div>&copy; 2026 BEAT. Все права защищены.</div>
-      <div class="social">
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-vk"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </footer>
+    <section id="benefits" class="section-alt">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-star"></i> Почему выбирают BEAT</h2>
+                <p>Простота, комплексность, безопасность.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div><h4>Простота</h4><p>Интуитивный интерфейс для всех возрастов.</p></div>
+                <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-layer-group"></i></div><h4>Комплексность</h4><p>Все показатели в одном месте.</p></div>
+                <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-ruble-sign"></i></div><h4>Доступность</h4><p>Бесплатная базовая версия.</p></div>
+                <div class="benefit-item fade-up"><div class="icon-circle"><i class="fas fa-map-pin"></i></div><h4>Локализация</h4><p>Адаптация под российский рынок.</p></div>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <section id="team">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-user-tie"></i> Наша команда</h2>
+                <p>Студенты и наставники.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Майорова Е.С.</h4><p>Руководитель</p></div>
+                <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Майорова А.С.</h4><p>Заместитель</p></div>
+                <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Емельянов А.М.</h4><p>Научный руководитель</p></div>
+                <div class="team-card fade-up"><i class="fas fa-user-circle team-icon"></i><h4>Филипенкова Е.М.</h4><p>Дизайнер</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-alt">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-quote-right"></i> Отзывы</h2>
+                <p>Мнения пользователей.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-up"><p>«BEAT помогает мне контролировать давление каждый день. Очень удобно и понятно!»</p><div class="author">— Анна, 65 лет</div></div>
+                <div class="testimonial-card fade-up"><p>«Отчёты для врача – супер! Теперь я прихожу на приём с готовой историей.»</p><div class="author">— Сергей, 58 лет</div></div>
+                <div class="testimonial-card fade-up"><p>«Даже моя мама (72 года) освоила приложение за один день. Спасибо!»</p><div class="author">— Екатерина, 34 года</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2><i class="fas fa-envelope"></i> Свяжитесь с нами</h2>
+                <p>Мы открыты к сотрудничеству.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-up">
+                    <h3>Контакты</h3>
+                    <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>г. Москва, Дорожная ул., 16к3</span></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i><span>info@beat-app.ru</span></div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i><span>+7 (977) 855-27-21</span></div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i><span>+7 (977) 855-39-19</span></div>
+                </div>
+                <form class="contact-form fade-up" id="contactForm">
+                    <input type="text" placeholder="Ваше имя" id="name" required />
+                    <input type="email" placeholder="Email" id="email" required />
+                    <textarea placeholder="Сообщение" id="message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div>&copy; 2026 BEAT. Все права защищены.</div>
+            <div class="social">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
