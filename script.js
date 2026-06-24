@@ -92,7 +92,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== Анимированное сердце =====
+// ============================================================
+// ===== АНИМИРОВАННОЕ СЕРДЦЕ ==================================
+// ============================================================
+
 const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
 const W = 400, H = 400;
@@ -101,6 +104,7 @@ let time = 0;
 function drawHeart(t) {
     ctx.clearRect(0, 0, W, H);
 
+    // Пульсация
     const beat = Math.sin(t * 2.8) * 0.5 + 0.5;
     const scale = 0.9 + beat * 0.2;
     const glow = 0.3 + beat * 0.4;
@@ -111,15 +115,18 @@ function drawHeart(t) {
     ctx.translate(cx, cy);
     ctx.scale(scale, scale);
 
+    // Свечение
     ctx.shadowColor = `rgba(255, 80, 80, ${glow * 0.5})`;
     ctx.shadowBlur = 40;
 
+    // Форма сердца
     ctx.beginPath();
     ctx.moveTo(0, 40);
     ctx.bezierCurveTo(-80, -20, -120, 40, 0, 110);
     ctx.bezierCurveTo(120, 40, 80, -20, 0, 40);
     ctx.closePath();
 
+    // Градиент
     const grad = ctx.createRadialGradient(-20, -10, 10, 0, 0, 100);
     grad.addColorStop(0, '#ff4d4d');
     grad.addColorStop(0.6, '#cc0000');
@@ -132,6 +139,7 @@ function drawHeart(t) {
     ctx.lineWidth = 2;
     ctx.stroke();
 
+    // Блик
     ctx.beginPath();
     ctx.ellipse(-25, -15, 20, 30, -0.3, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(255,255,255,0.15)';
@@ -139,7 +147,7 @@ function drawHeart(t) {
 
     ctx.restore();
 
-    // ЭКГ-линия
+    // ===== ЭКГ-линия =====
     ctx.save();
     ctx.strokeStyle = '#00ff88';
     ctx.lineWidth = 3;
@@ -154,7 +162,7 @@ function drawHeart(t) {
     for (let i = 0; i <= ecgW; i += 2) {
         const x = startX + i;
         let y = 0;
-        const phase = (i / ecgW) * 20 + t * 3;
+
         if (i < ecgW * 0.2) y = 0;
         else if (i < ecgW * 0.25) y = -15 * Math.sin((i - ecgW * 0.2) / (ecgW * 0.05) * Math.PI);
         else if (i < ecgW * 0.35) y = 5;
@@ -175,6 +183,7 @@ function drawHeart(t) {
     ctx.stroke();
     ctx.restore();
 
+    // Надпись BEAT
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 20px Inter, sans-serif';
     ctx.textAlign = 'center';
